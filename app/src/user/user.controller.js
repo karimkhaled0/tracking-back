@@ -143,11 +143,7 @@ export const deleteUser = async (req, res) => {
                 return res.status(404).end()
             }
             // remove the user from the category 
-            const category = await Category.findByIdAndUpdate({ _id: user.category }, { $pull: { technicals: user._id } }, { new: true });
-
-            if (!category) {
-                return res.status(404).json({ msg: "Category error!!  " })
-            }
+            const category = await Category.findByIdAndUpdate({ _id: user.category ? user.category : user._id }, { $pull: { technicals: user._id } }, { new: true });
 
             // Remove the user from database
             const deletedUser = await User.findOneAndRemove({

@@ -48,9 +48,13 @@ const userSchema = new mongoose.Schema({
     ],
     photo: {
         type: String
-    } ,
+    },
     isTeamLeader: {
-        type: Boolean ,
+        type: Boolean,
+        default: false
+    },
+    inRoom: {
+        type: Boolean,
         default: false
     }
 }, { timestamps: true })
