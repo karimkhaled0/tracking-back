@@ -1,45 +1,35 @@
-import Validator from "validator"
-import isEmpty from "./isEmpty"
+import Validator from "validator";
+import isEmpty from "./isEmpty";
 
-import { User } from '../src/user/user.model'
-
+import { User } from "../src/user/user.model";
 
 export const validateLoginInput = async (data) => {
   let errors = {};
 
-  data.loginId = !isEmpty(data.loginId) ? data.loginId : '';
-  data.password = !isEmpty(data.password) ? data.password : '';
+  data.email = !isEmpty(data.email) ? data.email : "";
+  data.password = !isEmpty(data.password) ? data.password : "";
 
-
-  const existUser = await User.findOne({ loginId: data.loginId })
-    .exec()
+  const existUser = await User.findOne({ email: data.email }).exec();
 
   if (!existUser) {
-    errors.loginId = "You have to register first in order to signin!"
-  }
-  else {
-    const match = await existUser.checkPassword(data.password)
+    errors.email = "You have to register first in order to signin!";
+  } else {
+    const match = await existUser.checkPassword(data.password);
     if (!match) {
-      errors.password = "incorrect password!"
+      errors.password = "incorrect password!";
     }
   }
 
-  if (Validator.isEmpty(data.loginId)) {
-    errors.loginId = 'loginId field is required';
+  if (Validator.isEmpty(data.email)) {
+    errors.email = "email field is required";
   }
 
   if (Validator.isEmpty(data.password)) {
-    errors.password = 'Password field is required'
+    errors.password = "Password field is required";
   }
 
   return {
     errors,
-    isValid: isEmpty(errors)
+    isValid: isEmpty(errors),
   };
-}
-
-
-
-
-
-
+};

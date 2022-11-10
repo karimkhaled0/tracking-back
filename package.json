@@ -1,5 +1,5 @@
 {
-  "name": "tracking-app",
+  "name": "booking-app",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -9,7 +9,7 @@
     "restart": "rimraf dist  && npm run build && npm start",
     "dev": "nodemon --exec npm run restart"
   },
-  "author": "Jmydev && Karimelmawe",
+  "author": "Karimelmawe",
   "license": "ISC",
   "dependencies": {
     "@babel/cli": "^7.17.6",
