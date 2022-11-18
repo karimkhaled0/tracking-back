@@ -21,7 +21,7 @@ app.use(cors());
 // socket.io config
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: ["http://localhost:3000"],
     credentials: true,
   },
 });
@@ -56,6 +56,7 @@ io.on("connection", (socket) => {
     io.emit("location:send", data);
   });
   socket.on("disconnect", () => {
+    console.log(io.sockets.sockets.size);
     console.log(`disconnect: ${socket.id}`);
   });
 });
