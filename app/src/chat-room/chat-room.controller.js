@@ -3,7 +3,7 @@ import { Room } from "./chat-room.model";
 export const getAllRooms = async (req, res) => {
   try {
     const rooms = await Room.find({})
-      .populate("messages")
+      .populate("messages.author")
       .populate("members")
       .lean()
       .exec();
@@ -39,7 +39,11 @@ export const createRoom = async (req, res) => {
 
 export const getRoom = async (req, res) => {
   try {
-    const room = await Room.findById({ _id: req.params.id }).lean().exec();
+    const room = await Room.findById({ _id: req.params.id })
+      .populate("messages.author")
+      .populate("members")
+      .lean()
+      .exec();
 
     if (!room) {
       return res.status(400).end();
@@ -59,7 +63,7 @@ export const updateRoom = async (req, res) => {
       { $push: { messages: req.body.messages } },
       { new: true }
     )
-      .populate("messages")
+      .populate("messages.author")
       .populate("members")
       .lean()
       .exec();
