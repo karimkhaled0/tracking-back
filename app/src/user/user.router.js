@@ -6,7 +6,6 @@ import {
   getAllTechnicals,
   updateUser,
   deleteUser,
-  getTechnicalsByCategory,
   changePassword,
 } from "./user.controller.js";
 

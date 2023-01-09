@@ -1,8 +1,6 @@
 import { User } from "./user.model.js";
 import { Category } from "../category/category.model.js";
-import { verifyToken } from "../../utils/auth.js";
 import bcrypt from "bcryptjs";
-import { Task } from "../task/task.model.js";
 
 export const me = (req, res) => {
   res.status(200).json({ data: req.user });
@@ -26,17 +24,6 @@ export const getUser = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
-  /*
-
- get users's current category 
-
- if not just proceeed 
-
- else 
-
- get category and pop user of and add user to new category
-
-*/
   try {
     //OWNER
     const ownerId = req.params.id;
@@ -189,47 +176,3 @@ export const changePassword = async (req, res) => {
     res.status(400).json({ error: e });
   }
 };
-
-/* 
-let token = req.headers.authorization.split('Bearer ')[1];  
-
-        if(!token){
-            return res.status(400).end();
-        }
-            const payload = await verifyToken(token);
-            console.log("payload" ,payload.id)
-    
-            const tokenUser = await User.findById(payload.id)
-            .select('-password')
-            .lean()
-            .exec()
-        console.log(tokenUser)
-
-        const requestedUser = await User.findById(req.params.id)
-        .lean()
-        .exec()
-
-        console.log(requestedUser);
-
-        if(!requestedUser){
-            return res.status(400).end();
-        }
-        console.log("Here")
-        console.log(requestedUser.id , tokenUser.id)
-
-        if(requestedUser.isAdmin || (req.user.id === tokenUser.id)) {
-           const updatedUser = await User.updateOne(requestedUser.id , req.body , {new: true})
-           .lean()
-           .exec()
-           if (!updatedUser){
-            return res.status(400).end()
-           }
-        res.status(201).json({data : updatedUser});
-        }
-        else {
-            res.status(400).json({error: "You are not authorized to perform this action!"})
-        }
-
-    
-
-*/
