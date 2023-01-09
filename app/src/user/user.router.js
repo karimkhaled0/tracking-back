@@ -10,24 +10,24 @@ import {
   changePassword,
 } from "./user.controller.js";
 
-const router = Router();
+const userRouter = Router();
 
 //api/user/technicals
-router.get("/technicals", getAllTechnicals);
+userRouter.get("/technicals", getAllTechnicals);
 
 // api/user/category /:name
 
 //router.get('/category/:name' ,getTechnicalsByCategory )
 
 //api/user/changePassword
-router.route("/changepassword").put(changePassword);
+userRouter.route("/changepassword").put(changePassword);
 
 //api/user/me
 
-router.get("/me", me);
+userRouter.get("/me", me);
 
 // api/user/:id
 
-router.route("/:id").get(getUser).put(updateUser).delete(deleteUser);
+userRouter.route("/:id").get(getUser).put(updateUser).delete(deleteUser);
 
-export default router;
+export default userRouter;

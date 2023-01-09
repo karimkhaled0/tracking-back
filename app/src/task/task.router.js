@@ -7,16 +7,16 @@ import {
   createTask,
 } from "./task.controller.js";
 
-const router = Router();
+const taskRouter = Router();
 
 // api/task/
 //get all tasks
 
-router.route("/").get(getAllTasks).post(createTask);
+taskRouter.route("/").get(getAllTasks).post(createTask);
 
 //api/task/:id
 // get task / update task / delete task
 
-router.route("/:id").get(getTask).put(updateTask).delete(deleteTask);
+taskRouter.route("/:id").get(getTask).put(updateTask).delete(deleteTask);
 
-export default router;
+export default taskRouter;

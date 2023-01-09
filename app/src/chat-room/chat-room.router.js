@@ -8,12 +8,12 @@ import {
   deleteRoom,
 } from "./chat-room.controller.js";
 
-const router = Router();
+const roomRouter = Router();
 
 // /api/chat
 
-router.route("/").get(getAllRooms).post(createRoom);
+roomRouter.route("/").get(getAllRooms).post(createRoom);
 
-router.route("/:id").get(getRoom).put(updateRoom).delete(deleteRoom);
+roomRouter.route("/:id").get(getRoom).put(updateRoom).delete(deleteRoom);
 
-export default router;
+export default roomRouter;
