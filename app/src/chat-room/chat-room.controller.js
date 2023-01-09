@@ -1,4 +1,4 @@
-import { Room } from "./chat-room.model";
+import { Room } from "./chat-room.model.js";
 
 export const getAllRooms = async (req, res) => {
   try {

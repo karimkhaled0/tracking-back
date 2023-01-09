@@ -6,7 +6,7 @@ import {
   getRoom,
   updateRoom,
   deleteRoom,
-} from "./chat-room.controller";
+} from "./chat-room.controller.js";
 
 const router = Router();
 

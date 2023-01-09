@@ -1,6 +1,6 @@
-import { Task } from "./task.model";
-import { validateTaskInput } from "../../validation/task";
-import { Category } from "../category/category.model";
+import { Task } from "./task.model.js";
+import { validateTaskInput } from "../../validation/task.js";
+import { Category } from "../category/category.model.js";
 
 export const createTask = async (req, res) => {
   try {

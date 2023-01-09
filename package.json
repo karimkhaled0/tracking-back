@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "build": "babel app --out-dir dist",
     "start": "node dist/app.js",
